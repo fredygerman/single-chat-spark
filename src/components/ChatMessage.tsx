@@ -7,7 +7,7 @@ interface ChatMessageProps {
 }
 
 export const ChatMessage = ({ message }: ChatMessageProps) => {
-  const isSender = message.from === "255693338637";
+  const isSender = message.role === 'user';
 
   return (
     <div className={`flex flex-col space-y-1 message-appear ${isSender ? 'items-end' : 'items-start'}`}>
@@ -19,7 +19,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
               : 'bg-secondary text-secondary-foreground'
           }`}
         >
-          <p className="text-sm leading-relaxed break-words">{message.text}</p>
+          <p className="text-sm leading-relaxed break-words">{message.content}</p>
         </div>
       </div>
       <span className="text-xs text-muted-foreground px-2">
