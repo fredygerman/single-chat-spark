@@ -5,77 +5,82 @@ import { ChatContainer } from "@/components/ChatContainer";
 import { ChatInput } from "@/components/ChatInput";
 import { Loader2 } from "lucide-react";
 
+// Mock messages for demonstration
+const mockMessages: Message[] = [
+  {
+    id: "1",
+    from: "255693338637",
+    text: "Hello there! 👋",
+    timestamp: Math.floor((Date.now() - 3600000) / 1000), // 1 hour ago
+    type: "text"
+  },
+  {
+    id: "2",
+    from: "15551853317",
+    text: "Hi! How can I help you today?",
+    timestamp: Math.floor((Date.now() - 3500000) / 1000),
+    type: "text"
+  },
+  {
+    id: "3",
+    from: "255693338637",
+    text: "I have a question about the new features you announced",
+    timestamp: Math.floor((Date.now() - 3400000) / 1000),
+    type: "text"
+  },
+  {
+    id: "4",
+    from: "15551853317",
+    text: "Of course! I'd be happy to explain our new features. We recently launched several exciting updates including improved real-time messaging and enhanced group chat capabilities.",
+    timestamp: Math.floor((Date.now() - 3300000) / 1000),
+    type: "text"
+  },
+  {
+    id: "5",
+    from: "255693338637",
+    text: "That sounds great! Can you tell me more about the group chat features?",
+    timestamp: Math.floor((Date.now() - 3200000) / 1000),
+    type: "text"
+  }
+];
+
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Simulated fetch messages function
+  // Simulated fetch messages function with mock data
   const fetchMessages = async () => {
-    // Replace this with your actual API call to PostgreSQL
     try {
-      const response = await fetch("/api/messages");
-      const data = await response.json();
-      setMessages(data.messages);
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setMessages(mockMessages);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  // Polling for new messages
+  // Initial fetch on component mount
   useEffect(() => {
-    const interval = setInterval(fetchMessages, 1000);
-    return () => clearInterval(interval);
+    fetchMessages();
   }, []);
 
   const handleSendMessage = async (text: string) => {
     setIsLoading(true);
     try {
-      // Replace with your actual API endpoint
-      await fetch("/api/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          object: "whatsapp_business_account",
-          entry: [
-            {
-              id: "406179402587770",
-              changes: [
-                {
-                  value: {
-                    messaging_product: "whatsapp",
-                    metadata: {
-                      display_phone_number: "15551853317",
-                      phone_number_id: "418536728017266",
-                    },
-                    contacts: [
-                      {
-                        profile: {
-                          name: "user",
-                        },
-                        wa_id: "255693338637",
-                      },
-                    ],
-                    messages: [
-                      {
-                        from: "255693338637",
-                        id: crypto.randomUUID(),
-                        timestamp: Math.floor(Date.now() / 1000),
-                        text: {
-                          body: text,
-                        },
-                        type: "text",
-                      },
-                    ],
-                  },
-                  field: "messages",
-                },
-              ],
-            },
-          ],
-        }),
-      });
+      // Simulate sending a message
+      const newMessage: Message = {
+        id: crypto.randomUUID(),
+        from: "255693338637",
+        text: text,
+        timestamp: Math.floor(Date.now() / 1000),
+        type: "text"
+      };
+      
+      // Add new message to the list
+      setMessages(prev => [...prev, newMessage]);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500));
     } catch (error) {
       console.error("Error sending message:", error);
     } finally {
