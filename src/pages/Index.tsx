@@ -130,7 +130,7 @@ const Index = () => {
         <h1 className="text-2xl font-semibold tracking-tight">Chat</h1>
       </div>
       
-      <div className="flex-1 min-h-0 border rounded-xl bg-card shadow-sm">
+      <div className="flex-1 min-h-0 border rounded-xl bg-card shadow-sm overflow-hidden">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center text-muted-foreground">
             <Loader2 className="h-6 w-6 animate-spin mr-2" />
