@@ -10,36 +10,85 @@ const mockMessages: Message[] = [
   {
     id: "1",
     from: "255693338637",
-    text: "Hello there! 👋",
-    timestamp: Math.floor((Date.now() - 3600000) / 1000), // 1 hour ago
+    text: "Hey! 👋",
+    timestamp: Math.floor((Date.now() - 7200000) / 1000),
     type: "text"
   },
   {
     id: "2",
     from: "15551853317",
-    text: "Hi! How can I help you today?",
-    timestamp: Math.floor((Date.now() - 3500000) / 1000),
+    text: "Hello! How can I assist you today?",
+    timestamp: Math.floor((Date.now() - 7100000) / 1000),
     type: "text"
   },
   {
     id: "3",
     from: "255693338637",
-    text: "I have a question about the new features you announced",
-    timestamp: Math.floor((Date.now() - 3400000) / 1000),
+    text: "I need help with my recent order",
+    timestamp: Math.floor((Date.now() - 7000000) / 1000),
     type: "text"
   },
   {
     id: "4",
     from: "15551853317",
-    text: "Of course! I'd be happy to explain our new features. We recently launched several exciting updates including improved real-time messaging and enhanced group chat capabilities.",
-    timestamp: Math.floor((Date.now() - 3300000) / 1000),
+    text: "Of course! Could you please provide your order number?",
+    timestamp: Math.floor((Date.now() - 6900000) / 1000),
     type: "text"
   },
   {
     id: "5",
     from: "255693338637",
-    text: "That sounds great! Can you tell me more about the group chat features?",
-    timestamp: Math.floor((Date.now() - 3200000) / 1000),
+    text: "Sure, it's #ORD-12345",
+    timestamp: Math.floor((Date.now() - 6800000) / 1000),
+    type: "text"
+  },
+  {
+    id: "6",
+    from: "15551853317",
+    text: "Thank you! I can see your order. It looks like it's currently in transit and will be delivered tomorrow between 2-4 PM.",
+    timestamp: Math.floor((Date.now() - 6700000) / 1000),
+    type: "text"
+  },
+  {
+    id: "7",
+    from: "255693338637",
+    text: "That's perfect! Could you also confirm the delivery address?",
+    timestamp: Math.floor((Date.now() - 6600000) / 1000),
+    type: "text"
+  },
+  {
+    id: "8",
+    from: "15551853317",
+    text: "Of course! The delivery address is: 123 Main Street, Apt 4B, New York, NY 10001. Is this correct?",
+    timestamp: Math.floor((Date.now() - 6500000) / 1000),
+    type: "text"
+  },
+  {
+    id: "9",
+    from: "255693338637",
+    text: "Yes, that's correct! Thank you so much for your help 😊",
+    timestamp: Math.floor((Date.now() - 6400000) / 1000),
+    type: "text"
+  },
+  {
+    id: "10",
+    from: "15551853317",
+    text: "You're welcome! Is there anything else you need help with?",
+    timestamp: Math.floor((Date.now() - 6300000) / 1000),
+    type: "text"
+  },
+  {
+    id: "11",
+    from: "255693338637",
+    text: "No, that's all for now. Have a great day!",
+    timestamp: Math.floor((Date.now() - 6200000) / 1000),
+    type: "text"
+  },
+  {
+    id: "12",
+    from: "15551853317",
+    text: "You too! Don't hesitate to reach out if you need anything else. 👋",
+    timestamp: Math.floor((Date.now() - 6100000) / 1000),
     type: "text"
   }
 ];
