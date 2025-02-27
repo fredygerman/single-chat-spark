@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { Message } from "@/types/chat";
 import { ChatContainer } from "@/components/ChatContainer";
 import { ChatInput } from "@/components/ChatInput";
-import { Loader2, Search } from "lucide-react";
+import { Loader2, MoreVertical, RefreshCw } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 // Mock messages for demonstration
 const mockMessages: Message[] = [
@@ -100,6 +106,10 @@ const Index = () => {
     fetchMessages();
   }, []);
 
+  const handleRefresh = () => {
+    fetchMessages();
+  };
+
   const handleSendMessage = async (text: string) => {
     setIsLoading(true);
     try {
@@ -132,9 +142,25 @@ const Index = () => {
           </div>
           <h1 className="text-xl font-semibold text-primary-foreground">Twiga</h1>
         </div>
-        <button className="text-primary-foreground">
-          <Search className="w-6 h-6" />
-        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="text-primary-foreground">
+              <MoreVertical className="w-6 h-6" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={handleRefresh}>
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Refresh
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              Clear chat
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              Settings
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       
       <div className="flex-1 min-h-0 overflow-hidden">

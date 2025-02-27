@@ -26,7 +26,10 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
               {format(new Date(message.timestamp * 1000), "HH:mm")}
             </span>
             {isSender && (
-              <Check className="w-4 h-4 text-muted-foreground" />
+              <div className="flex -space-x-1">
+                <Check className="w-4 h-4 text-muted-foreground" />
+                <Check className="w-4 h-4 text-muted-foreground" />
+              </div>
             )}
           </div>
         </div>
