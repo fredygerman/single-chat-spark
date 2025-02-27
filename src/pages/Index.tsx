@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { Message } from "@/types/chat";
 import { ChatContainer } from "@/components/ChatContainer";
 import { ChatInput } from "@/components/ChatInput";
-import { Loader2 } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 
 // Mock messages for demonstration
 const mockMessages: Message[] = [
@@ -125,12 +124,20 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-2xl mx-auto p-4 bg-background">
-      <div className="mb-4">
-        <h1 className="text-2xl font-semibold tracking-tight">Chat</h1>
+    <div className="flex flex-col h-screen max-w-2xl mx-auto bg-background">
+      <div className="bg-primary px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+            <span className="text-lg font-semibold text-primary">T</span>
+          </div>
+          <h1 className="text-xl font-semibold text-primary-foreground">Twiga</h1>
+        </div>
+        <button className="text-primary-foreground">
+          <Search className="w-6 h-6" />
+        </button>
       </div>
       
-      <div className="flex-1 min-h-0 border rounded-xl bg-card shadow-sm overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-hidden">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center text-muted-foreground">
             <Loader2 className="h-6 w-6 animate-spin mr-2" />
@@ -141,7 +148,7 @@ const Index = () => {
         )}
       </div>
 
-      <div className="mt-4">
+      <div className="p-4">
         <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
       </div>
     </div>
